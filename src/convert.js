@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Display} from 'display.js';
-import {Unit} from 'unit.js';
-import {Numbers} from 'numbers.js';
-import {Control} from 'control.js';
+import {Display} from './display.js';
+import {Unit} from './unit.js';
+import {Numbers} from './numbers.js';
+import {Control} from './control.js';
 
 
 export class Convert extends React.Component{
@@ -13,7 +12,7 @@ export class Convert extends React.Component{
     return(
       <div id='main-container' >
         <Display />
-        <Units    />
+        <Unit    />
         <Numbers />
         <Control />
       </div>

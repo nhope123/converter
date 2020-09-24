@@ -3,8 +3,8 @@ import React from 'react';
 const DisplayElement = (props)=>{
   return(
     <div >
-      <span >{this.props.unit}</span>
-      <span >{this.props.value}</span>
+      <span >{/* this.props.unit */} milli</span>
+      <span >{/* this.props.value */}</span>
     </div>
   );
 }
