@@ -11,10 +11,10 @@ export class Convert extends React.Component{
 
     return(
       <div id='main-container' >
-        <Display />
+        {/* <Display />
         <Unit    />
         <Numbers />
-        <Control />
+        <Control /> */}
       </div>
     );
   }
