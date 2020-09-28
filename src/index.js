@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import './convert.scss';
+import './control.scss';
+import './option.scss';
 import {Convert} from './convert.js';
 import * as serviceWorker from './serviceWorker';
 
