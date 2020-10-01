@@ -20,7 +20,7 @@ export class Convert extends React.Component{
     return(
       <div>
         <nav >
-          <i class="fa fa-rebel" aria-hidden="true"></i>
+          {/* <i class="fa fa-rebel" aria-hidden="true"></i> */}
           <span>Rebel Conversion</span>
         </nav>
         <div id='main-container' >
