@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-let lengthUnit = ['Millimeter','Centimeter','Inch','Feet','Meter','Kilometer'];
-let weightUnit = ['Milligram','Gram','Ounce','Pound','Kilogram'];
-let temperUnit = ['Fahrenheit','Celsius','Kelvin'];
+//let lengthUnit = ['Millimeter','Centimeter','Inch','Feet','Meter','Kilometer'];
+//let weightUnit = ['Milligram','Gram','Ounce','Pound','Kilogram'];
+//let temperUnit = ['Fahrenheit','Celsius','Kelvin'];
 //var link = <div id="test"> great life</div>;
 class Dropdown extends React.Component{
 
@@ -12,9 +12,9 @@ class Dropdown extends React.Component{
       <div className='dropdown'>
         <button className='dropdownBtn' > inches </button>
         <div className='content' >
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <a href="#main-container">Link 1</a>
+          <a href="#main-container">Link 2</a>
+          <a href="#main-container">Link 3</a>
         </div>
 
       </div>
@@ -40,7 +40,7 @@ export class Option extends React.Component {
     return(
       <div id='conversion-unit'>
       <Dropdown />
-      <button type='button' >
+      <button type='button' >&#8646;
 
       </button>
       <Dropdown />

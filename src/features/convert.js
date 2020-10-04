@@ -1,6 +1,7 @@
 import React from 'react';
 import {Option} from './option.js'
-import {Control} from './control.js';
+import Control from './control.js';
+import {Interact} from './interact.js';
 
 
 
@@ -20,13 +21,16 @@ export class Convert extends React.Component{
     return(
       <div>
         <nav >
-          {/* <i class="fa fa-rebel" aria-hidden="true"></i> */}
+          <i className="fa fa-rebel" aria-hidden="true"></i>
           <span>Rebel Conversion</span>
         </nav>
         <div id='main-container' >
-          <Control callback={this.changeUnit} />
-          <Option unit={this.state.unit} />
-          <span>{this.state.unit}</span>
+          <div id='boundary'>
+            <Control callback={this.changeUnit} />
+            <Option unit={this.state.unit} />
+            <Interact />
+            <span>{this.state.unit}</span>
+          </div>
         </div>
       </div>
     );
