@@ -1,9 +1,10 @@
 import React from 'react';
-import {lengthAction, weigthAction, tempAction} from './../store/action.js';
+import {lengthAction, weigthAction, tempAction} from './../store/controlActions.js';
 import {connect} from 'react-redux';
 
 // States needed for this component
 const mapStateToProps = (state)=>{
+  console.log('life: '+ state.uint);
   return {
     styleLength: state.unitClass[0],
     styleWeight: state.unitClass[1],

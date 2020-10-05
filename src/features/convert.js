@@ -1,5 +1,5 @@
 import React from 'react';
-import {Option} from './option.js'
+import Option from './option.js'
 import Control from './control.js';
 import {Interact} from './interact.js';
 
