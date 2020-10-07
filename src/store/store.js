@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-/*import {unitSelectionReducer} from './controlActions.js';
-import {conversionOptionReducer} from './optionActions.js'; */
-import mainReducer from './reducers.js';
+import {unitSelectionReducer} from './controlActions.js';
+import {conversionOptionReducer} from './optionActions.js';
+
 
 /*   ~~~States needed are:   ~~~~
     1> Control or Unit state --> For selecting the unit of conversion.
@@ -17,5 +17,5 @@ import mainReducer from './reducers.js';
 
 
     */
-//const mainReducer = combineReducers({unit:unitSelectionReducer,convert:conversionOptionReducer});
-export const store = createStore(mainReducer);
+const mainReducer = combineReducers({unit:unitSelectionReducer,convert:conversionOptionReducer});
+export const store = createStore(unitSelectionReducer);

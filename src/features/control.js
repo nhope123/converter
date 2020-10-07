@@ -4,8 +4,9 @@ import {connect} from 'react-redux';
 
 // States needed for this component
 const mapStateToProps = (state)=>{
-  console.log('life: '+ state.uint);
   return {
+    fromUnit: state.fromUnitOptions,
+    toUnit: state.toUnitOptions,
     styleLength: state.unitClass[0],
     styleWeight: state.unitClass[1],
     styleTemp: state.unitClass[2]
@@ -38,6 +39,9 @@ class Control extends React.Component{
                        label:'Weight', style: this.props.styleWeight};
     var tempValue = {callback:  this.props.selectTemp, id:'temperature',
                      label:'Temperature', style: this.props.styleTemp};
+
+    //console.log('From Unit: '+ this.props.fromUnit);
+    //console.log('To Unit: '+ this.props.toUnit);
 
     return(
       <div id='control'>

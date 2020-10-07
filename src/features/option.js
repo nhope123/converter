@@ -17,6 +17,8 @@ import Dropdown from './dropdown.js';
 
 class Option extends React.Component {
   render(){
+    //console.log('From label: '+this.props.fromUnit +' ; FromList: '+this.props.fromUnitOptions);
+    //console.log('To Label: '+this.props.toUnit +' ; To List: '+ this.props.toUnitOptions);
     return(
       <div id='conversion-unit'>
       <Dropdown {...{label:this.props.fromUnit, choice: this.props.fromUnitOptions}}/>
