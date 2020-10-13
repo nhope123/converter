@@ -7,8 +7,14 @@ class Option extends React.Component {
   render(){
     return(
       <div id='conversion-unit'>
-      <Dropdown {...{label:this.props.fromUnit, choice: this.props.fromUnitOptions}}/>
-      <Dropdown {...{label:this.props.toUnit, choice: this.props.toUnitOptions}} />
+      <Dropdown {...{label:this.props.fromUnit,
+                     choice: this.props.fromUnitOptions,
+                     counterUnit: this.props.toUnit
+                   }}/>
+      <Dropdown {...{label:this.props.toUnit,
+                     choice: this.props.toUnitOptions,
+                     counterUnit: this.props.fromUnit
+                   }} />
       </div>
     );
   }

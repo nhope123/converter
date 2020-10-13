@@ -1,6 +1,10 @@
 
+const lengthList = ['fromMillimeter', 'fromCentimeter','fromInch','fromFeet','fromMeter','fromKilometer'];
+const weightList = ['fromMilligram', 'fromGram','fromOunce', 'fromPound','fromKilogram'];
+const tempList = ['fromFahrenheit',  'fromCelsius','fromKelvin'];
 
 
+// Conversion values for length units
 const lengthConversionValues = {
   'fromMillimeter': { toMillimeter: 1, toCentimeter: 0.01, toInch:0.0393700787,
                       toFeet:0.0032808399, toMeter:0.001, toKilometer:0.000001
@@ -23,6 +27,7 @@ const lengthConversionValues = {
                     }
 };
 
+// Conversion values for Weight units
 const weightConversionValues = {
   'fromMilligram': { toMilligram: 1, toGram: 1.0e-3, toOunce: 3.5274e-5,
                      toPound: 2.2046226218488e-6, toKilogram: 1.0e-6
@@ -41,15 +46,18 @@ const weightConversionValues = {
                    }
 };
 
+// Convert length given a number, a Unit from and Unit to.
+const convertLength = (number, unitFrom, unitTo)=>{
+  return (number * lengthConversionValues[unitFrom][unitTo])
+};
 
+// Convert Weight given a number, a Unit from and Unit to.
+const convertWeight = (number, unitFrom, unitTo)=>{
+  return (number * weightConversionValues[unitFrom][unitTo])
+};
 
-export const convertLength = (number, unitFrom, unitTo)=>{
-
-  //console.log('From: '+unitFrom +', To: '+unitTo+', Num: '+number);
-  return (number * lengthConversionValues[unitFrom][unitTo])};
-export const convertWeight = (number, unitFrom, unitTo)=>{return (number * weightConversionValues[unitFrom][unitTo])};
-
-export function convertTemp(number, unitFrom, unitTo){
+// Convert Temperature given a number, a Unit from and Unit to.
+function convertTemp(number, unitFrom, unitTo){
   var result ;
   switch (unitFrom) {
     case 'fromFahrenheit':
@@ -71,4 +79,32 @@ export function convertTemp(number, unitFrom, unitTo){
     default:
       return 'NAN';
   }
+}
+
+// Validate input as an int or float number
+export function validateInput(rawInput, changeInput){
+ return (
+   (rawInput.endsWith('.') && (changeInput.toString()).length === (rawInput.length -1) &&
+    (rawInput.match(/[.][0-9]*[.]/) === null)) ? rawInput :
+        (rawInput.endsWith('0') && rawInput.includes('.'))? rawInput :
+            (rawInput === null)? 0 : changeInput
+ )
+}
+
+// Convert all unit in application
+export function convert(number, unitFrom, unitTo){
+  return(
+    (lengthList.includes(unitFrom))? convertLength(number, unitFrom, unitTo):
+                    (weightList.includes(unitFrom))? convertWeight(number, unitFrom, unitTo):
+                        (tempList.includes(unitFrom))? convertTemp(number, unitFrom, unitTo): ''
+  )
+}
+
+// Evaluate, and validate input then convert to new unit
+export function evaluate(anObject){
+  var inputValue = Math.abs(parseFloat(anObject.data.toString()));
+  return {
+    input: validateInput( anObject.data.toString(), inputValue),
+    output: convert(inputValue, anObject.fromUnit, anObject.toUnit )
+  };
 }

@@ -1,43 +1,81 @@
 import * as Unit from './../actions/unitActions.js';
+import * as OA from './../actions/optionActions.js';
 import {CONVERT} from './../actions/convertActions.js';
-import {convertLength, convertWeight, convertTemp} from './../conversion/lengthConversion.js';
+import {evaluate} from './../conversion/unitConversion.js';
 
+
+// The default and initialing value for the Interact component and states
 const conversionDefault = {input: 0, output: 0};
-const lengthList = ['fromMillimeter', 'fromCentimeter','fromInch','fromFeet','fromMeter','fromKilometer'];
-const weightList = ['fromMilligram', 'fromGram','fromOunce', 'fromPound','fromKilogram'];
-const tempList = ['fromFahrenheit',  'fromCelsius','fromKelvin'];
 
-function evaluate(anObject){
-  var rawData = anObject.data;
-  var unitFrom = anObject.fromUnit;
-  var unitTo = anObject.toUnit;
-  var inputValue = Math.abs(parseFloat(rawData));
-  var outputReturn;
-  var inputReturn =
-    (rawData.endsWith('.') && (inputValue.toString()).length === (rawData.length -1) &&
-      (rawData.match(/[.][0-9]*[.]/) === null)) ? rawData :
-          (rawData.endsWith('0') && rawData.includes('.'))? rawData : inputValue ;
-
-//console.log('From: '+unitFrom +', To: '+anObject.toUnit+', Num: '+inputValue);
-
-  outputReturn = (lengthList.includes(unitFrom))? convertLength(inputValue, unitFrom, unitTo):
-                    (weightList.includes(unitFrom))? convertWeight(inputValue, unitFrom, unitTo):
-                        (tempList.includes(unitFrom))? convertTemp(inputValue, unitFrom, unitTo): '';
-
-
-  console.log('Raw input: '+rawData +', change value: '+inputValue);
-  return {input:inputReturn, output: outputReturn};
-}
-
+// Reducer connected to the Interact component and states
 export default function convertReducer(state= conversionDefault, action){
+  //var state
+
   switch (action.type) {
-    case Unit.LENGTH || Unit.WEIGHT || Unit.TEMP:
+    case Unit.LENGTH :
+      return conversionDefault;
+    case Unit.WEIGHT :
+      return conversionDefault;
+    case Unit.TEMP:
       return conversionDefault;
     case CONVERT:
-
-
-      return Object.assign({}, state, evaluate(action));
-
+      return evaluate(action);
+  /*  case OA.FROMMILLIMETER:
+      return evaluate(action);
+    case OA.TOMILLIMETER:
+      return evaluate(action);
+    case OA.FROMCENTIMETER:
+      return evaluate(action);
+    case OA.TOCENTIMETER:
+      return evaluate(action);
+    case OA.FROMINCH:
+      return evaluate(action);
+    case OA.TOINCH:
+      return evaluate(action);
+    case OA.FROMFEET:
+      return evaluate(action);
+    case OA.TOFEET:
+      return evaluate(action);
+    case OA.FROMMETER:
+      return evaluate(action);
+    case OA.TOMETER:
+      return evaluate(action);
+    case OA.FROMKILOMETER:
+      return evaluate(action);
+    case OA.TOKILOMETER:
+      return evaluate(action);
+    case OA.FROMFAHRENHEIT:
+      return evaluate(action);
+    case OA.TOFAHRENHEIT:
+      return evaluate(action);
+    case OA.FROMCELSIUS:
+      return evaluate(action);
+    case OA.TOCELSIUS:
+      return evaluate(action);
+    case OA.FROMKELVIN:
+      return evaluate(action);
+    case OA.TOKELVIN:
+      return evaluate(action);
+    case OA.FROMMILLIGRAM:
+      return evaluate(action);
+    case OA.TOMILLIGRAM:
+      return evaluate(action);
+    case OA.FROMGRAM:
+      return evaluate(action);
+    case OA.TOGRAM:
+      return evaluate(action);
+    case OA.FROMOUNCE:
+      return evaluate(action);
+    case OA.TOOUNCE:
+      return evaluate(action);
+    case OA.FROMPOUND:
+      return evaluate(action);
+    case OA.TOPOUND:
+      return evaluate(action);
+    case OA.FROMKILOGRAM:
+      return evaluate(action);
+    case OA.TOKILOGRAM:
+      return evaluate(action); */
     default:
       return state;
   }

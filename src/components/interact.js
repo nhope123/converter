@@ -21,7 +21,7 @@ const mapStateToProps = (state)=>{
     input: state.convert.input,
     output: state.convert.output,
     fromUnit: state.option.fromUnit,
-    toUint: state.option.toUnit
+    toUnit: state.option.toUnit
   }
 };
 

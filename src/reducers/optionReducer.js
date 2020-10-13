@@ -8,6 +8,7 @@ const fromAssignState = (stateValue, actionValue)=>{
         );
       };
 const toAssignState = (stateValue, actionValue)=>{
+  console.log('setting toUnit: '+actionValue.type);
   return Object.assign(
           {},stateValue, {toUnit: actionValue.type, toUnitOptions: actionValue.options}
         );
@@ -74,10 +75,10 @@ export default function conversionOptionReducer(state = OA.initializeLength, act
       return fromAssignState(state,action);
     case OA.TOPOUND:
       return toAssignState(state,action);
-      case OA.FROMKILOGRAM:
-        return fromAssignState(state,action);
-      case OA.TOKILOGRAM:
-        return toAssignState(state,action);
+    case OA.FROMKILOGRAM:
+      return fromAssignState(state,action);
+    case OA.TOKILOGRAM:
+      return toAssignState(state,action);
     default:
       return state;
   }
