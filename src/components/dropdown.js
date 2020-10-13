@@ -7,40 +7,40 @@ import {bindActionCreators} from 'redux';
 class Dropdown extends React.Component{
   render(){
     const unitValues = {
-      'fromMillimeter': ['Millimeter',this.props.convertFromMillimeter,'fmm'],
-      'fromCentimeter': ['Centimeter', this.props.convertFromCentimeter,'fcm'],
-      'fromInch': ['Inch', this.props.convertFromInch,'fin'],
-      'fromFeet': ['Feet', this.props.convertFromFeet,'fft'],
-      'fromMeter': ['Meter', this.props.convertFromMeter,'fmt'],
-      'fromKilometer': ['Kilometer', this.props.convertFromKiloMeter,'fkm'],
+      'fromMillimeter': ['Millimeter',()=>this.props.convertFromMillimeter(this.props.counterUnit),'fmm'],
+      'fromCentimeter': ['Centimeter', ()=>this.props.convertFromCentimeter(this.props.counterUnit),'fcm'],
+      'fromInch': ['Inch', ()=>this.props.convertFromInch(this.props.counterUnit),'fin'],
+      'fromFeet': ['Feet', ()=>this.props.convertFromFeet(this.props.counterUnit),'fft'],
+      'fromMeter': ['Meter', ()=>this.props.convertFromMeter(this.props.counterUnit),'fmt'],
+      'fromKilometer': ['Kilometer', ()=>this.props.convertFromKiloMeter(this.props.counterUnit),'fkm'],
 
-      'toMillimeter': ['Millimeter',this.props.convertToMillimeter,'tmm'],
-      'toCentimeter': ['Centimeter', this.props.convertToCentimeter,'tcm'],
-      'toInch': ['Inch', this.props.convertToInch,'tin'],
-      'toFeet': ['Feet', this.props.convertToFeet,'tft'],
-      'toMeter': ['Meter', this.props.convertToMeter,'tmt'],
-      'toKilometer': ['Kilometer', this.props.convertToKiloMeter,'tkm'],
+      'toMillimeter': ['Millimeter',()=>this.props.convertToMillimeter(this.props.counterUnit),'tmm'],
+      'toCentimeter': ['Centimeter', ()=>this.props.convertToCentimeter(this.props.counterUnit),'tcm'],
+      'toInch': ['Inch', ()=>this.props.convertToInch(this.props.counterUnit),'tin'],
+      'toFeet': ['Feet', ()=>this.props.convertToFeet(this.props.counterUnit),'tft'],
+      'toMeter': ['Meter', ()=>this.props.convertToMeter(this.props.counterUnit),'tmt'],
+      'toKilometer': ['Kilometer', ()=>this.props.convertToKiloMeter(this.props.counterUnit),'tkm'],
 
-      'fromFahrenheit': ['Fahrenheit',this.props.convertFromFahrenheit, 'ffh'],
-      'fromCelsius': ['Celsius', this.props.convertFromCelsius, 'fcs'],
-      'fromKelvin': ['Kelvin', this.props.convertFromKelvin, 'fkn'],
+      'fromFahrenheit': ['Fahrenheit',()=>this.props.convertFromFahrenheit(this.props.counterUnit), 'ffh'],
+      'fromCelsius': ['Celsius', ()=>this.props.convertFromCelsius(this.props.counterUnit), 'fcs'],
+      'fromKelvin': ['Kelvin', ()=>this.props.convertFromKelvin(this.props.counterUnit), 'fkn'],
 
-      'toFahrenheit': ['Fahrenheit',this.props.convertToFahrenheit, 'tfh'],
-      'toCelsius': ['Celsius', this.props.convertToCelsius, 'tcs'],
-      'toKelvin': ['Kelvin', this.props.convertToKelvin, 'tkn'],
+      'toFahrenheit': ['Fahrenheit',()=>this.props.convertToFahrenheit(this.props.counterUnit), 'tfh'],
+      'toCelsius': ['Celsius', ()=>this.props.convertToCelsius(this.props.counterUnit), 'tcs'],
+      'toKelvin': ['Kelvin', ()=>this.props.convertToKelvin(this.props.counterUnit), 'tkn'],
 
 
-      'fromMilligram': ['Milligram', this.props.convertFromMillgram, 'fmg'],
-      'fromGram': ['Gram', this.props.convertFromGram, 'fg'],
-      'fromOunce': ['Ounce', this.props.convertFromOunce, 'foz'],
-      'fromPound': ['Pound', this.props.convertFromPound, 'flb'],
-      'fromKilogram': ['Kilogram', this.props.convertFromKilogram, 'fkg'],
+      'fromMilligram': ['Milligram',()=> this.props.convertFromMillgram(this.props.counterUnit), 'fmg'],
+      'fromGram': ['Gram', ()=>this.props.convertFromGram(this.props.counterUnit), 'fg'],
+      'fromOunce': ['Ounce', ()=>this.props.convertFromOunce(this.props.counterUnit), 'foz'],
+      'fromPound': ['Pound', ()=>this.props.convertFromPound(this.props.counterUnit), 'flb'],
+      'fromKilogram': ['Kilogram', ()=>this.props.convertFromKilogram(this.props.counterUnit), 'fkg'],
 
-      'toMilligram': ['Milligram', this.props.convertToMillgram, 'tmg'],
-      'toGram': ['Gram', this.props.convertToGram, 'tg'],
-      'toOunce': ['Ounce', this.props.convertToOunce, 'toz'],
-      'toPound': ['Pound', this.props.convertToPound, 'tlb'],
-      'toKilogram': ['Kilogram', this.props.convertToKilogram, 'tkg']
+      'toMilligram': ['Milligram', ()=>this.props.convertToMillgram(this.props.counterUnit), 'tmg'],
+      'toGram': ['Gram', ()=>this.props.convertToGram(this.props.counterUnit), 'tg'],
+      'toOunce': ['Ounce', ()=>this.props.convertToOunce(this.props.counterUnit), 'toz'],
+      'toPound': ['Pound', ()=>this.props.convertToPound(this.props.counterUnit), 'tlb'],
+      'toKilogram': ['Kilogram', ()=>this.props.convertToKilogram(this.props.counterUnit), 'tkg']
     };
 
     return(
@@ -55,6 +55,8 @@ class Dropdown extends React.Component{
     );
   }
 }
+
+// Dispatching actions needed for this component
 const mapDispatchToProps = (dispatch)=>{
   return bindActionCreators({
     convertFromMillimeter: OA.fromMillimeterAction,
@@ -92,4 +94,6 @@ const mapDispatchToProps = (dispatch)=>{
     convertFromKilogram: OA.fromKilogramAction
   }, dispatch);
 }
+
+// Connect the component to the store
 export default connect(null, mapDispatchToProps)(Dropdown);

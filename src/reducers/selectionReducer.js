@@ -1,7 +1,9 @@
 import * as Unit from './../actions/unitActions.js';
 
+const selectionDefault = {unitClass: ['active','','']};
+
 // Reducer for the Control Component
-export default function unitSelectionReducer(state ={unitClass: ['active','','']}, action){
+export default function unitSelectionReducer(state = selectionDefault, action){
 
   switch (action.type) {
     case Unit.LENGTH:

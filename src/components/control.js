@@ -15,11 +15,11 @@ const Button = (props)=>{
 class Control extends React.Component{
   render(){
     var lengthValue = {callback: this.props.selectLength, id:'length',
-                   label:'Length', style: this.props.style[0]};
+                       label:'Length', style: this.props.style[0]};
     var weightValue = {callback:this.props.selectWeight, id:'weight',
-                   label:'Weight', style: this.props.style[1]};
-    var tempValue = {callback:  this.props.selectTemp, id:'temperature',
-                 label:'Temperature', style: this.props.style[2]};
+                       label:'Weight', style: this.props.style[1]};
+    var tempValue =   {callback:  this.props.selectTemp, id:'temperature',
+                       label:'Temperature', style: this.props.style[2]};
     return(
       <div id='control'>
         <Button {...lengthValue}/>
@@ -46,4 +46,5 @@ const mapDispatchToProps = (dispatch)=>{
     }, dispatch);
 };
 
+// Connect the component to the store
 export  default connect(mapStateToProps,mapDispatchToProps)(Control);

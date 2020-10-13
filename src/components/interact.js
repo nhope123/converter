@@ -6,7 +6,6 @@ import {convertAction} from './../actions/convertActions.js';
 // Container component for conversion input vale and the converted display value
 class Interact extends React.Component{
   render(){
-    console.log('To: '+this.props.toUnit);
     return(
       <div id='results'>
         <input id='input' type='text' min='0'  value={this.props.input} onChange={(event)=>this.props.convert(event, this.props.fromUnit,this.props.toUnit)} />
@@ -16,6 +15,7 @@ class Interact extends React.Component{
   }
 }
 
+// States needed for this component
 const mapStateToProps = (state)=>{
   return{
     input: state.convert.input,
@@ -25,9 +25,12 @@ const mapStateToProps = (state)=>{
   }
 };
 
+// Dispatching actions needed for this component
 const mapDispatchToProps = (dispatch)=>{
   return bindActionCreators({
     convert: convertAction
   },dispatch);
 }
+
+// Connect the component to the store
 export default connect(mapStateToProps, mapDispatchToProps)(Interact);

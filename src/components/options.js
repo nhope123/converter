@@ -7,14 +7,16 @@ class Option extends React.Component {
   render(){
     return(
       <div id='conversion-unit'>
-      <Dropdown {...{label:this.props.fromUnit,
-                     choice: this.props.fromUnitOptions,
-                     counterUnit: this.props.toUnit
-                   }}/>
-      <Dropdown {...{label:this.props.toUnit,
-                     choice: this.props.toUnitOptions,
-                     counterUnit: this.props.fromUnit
-                   }} />
+        <Dropdown {...{label:this.props.fromUnit,
+                       choice: this.props.fromUnitOptions,
+                       counterUnit: this.props.toUnit
+                     }}/>
+        <div id='direction'><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+</div>
+        <Dropdown {...{label:this.props.toUnit,
+                       choice: this.props.toUnitOptions,
+                       counterUnit: this.props.fromUnit
+                     }} />
       </div>
     );
   }
@@ -30,4 +32,5 @@ const mapStateToProps = (state)=>{
   }
 }
 
+// Connect the component to the store
 export default connect(mapStateToProps, null)(Option);

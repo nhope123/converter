@@ -9,7 +9,8 @@ const conversionDefault = {input: 0, output: 0};
 
 // Reducer connected to the Interact component and states
 export default function convertReducer(state= conversionDefault, action){
-  //var state
+  var fromArgs = {data: state.input, fromUnit: action.type, toUnit: action.counterUnit };
+  var toArgs = {data: state.input, fromUnit: action.counterUnit, toUnit: action.type };
 
   switch (action.type) {
     case Unit.LENGTH :
@@ -20,62 +21,62 @@ export default function convertReducer(state= conversionDefault, action){
       return conversionDefault;
     case CONVERT:
       return evaluate(action);
-  /*  case OA.FROMMILLIMETER:
-      return evaluate(action);
+    case OA.FROMMILLIMETER:
+      return evaluate(fromArgs);
     case OA.TOMILLIMETER:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMCENTIMETER:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOCENTIMETER:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMINCH:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOINCH:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMFEET:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOFEET:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMMETER:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOMETER:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMKILOMETER:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOKILOMETER:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMFAHRENHEIT:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOFAHRENHEIT:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMCELSIUS:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOCELSIUS:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMKELVIN:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOKELVIN:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMMILLIGRAM:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOMILLIGRAM:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMGRAM:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOGRAM:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMOUNCE:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOOUNCE:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMPOUND:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOPOUND:
-      return evaluate(action);
+      return evaluate(toArgs);
     case OA.FROMKILOGRAM:
-      return evaluate(action);
+      return evaluate(fromArgs);
     case OA.TOKILOGRAM:
-      return evaluate(action); */
+      return evaluate(toArgs);
     default:
       return state;
   }

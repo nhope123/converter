@@ -3,7 +3,8 @@ import Option from './options.js';
 import Control from './control.js';
 import Interact from './interact.js';
 
-class Convert extends React.Component{
+// Main application Component
+export default class Convert extends React.Component{
   render(){
     return(
       <div>
@@ -22,5 +23,3 @@ class Convert extends React.Component{
     );
   }
 }
-
-export default Convert;

@@ -1,14 +1,15 @@
 import * as Unit from './../actions/unitActions.js';
 import * as OA from './../actions/optionActions.js';
 
-// Simpified setting state
+// Setting state for units to convert from
 const fromAssignState = (stateValue, actionValue)=>{
   return Object.assign(
           {},stateValue, {fromUnit: actionValue.type, fromUnitOptions: actionValue.options}
         );
       };
+
+// Setting state for units to convert to
 const toAssignState = (stateValue, actionValue)=>{
-  console.log('setting toUnit: '+actionValue.type);
   return Object.assign(
           {},stateValue, {toUnit: actionValue.type, toUnitOptions: actionValue.options}
         );
