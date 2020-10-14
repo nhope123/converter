@@ -8,8 +8,15 @@ class Interact extends React.Component{
   render(){
     return(
       <div id='results'>
-        <input id='input' type='text' min='0'  value={this.props.input} onChange={(event)=>this.props.convert(event, this.props.fromUnit,this.props.toUnit)} />
-        <div id='display' >{ this.props.output}</div>
+        <div id='begin'>
+          <input id='input' type='text' min='0'  value={this.props.input} onChange={(event)=>this.props.convert(event, this.props.fromUnit,this.props.toUnit)} />
+          <span>{this.props.fromSymbol}</span>
+        </div>
+        <div id='end'>
+          <div id='display' >{ this.props.output}
+          </div>
+          <span> {this.props.toSymbol}</span>
+        </div>
       </div>
     );
   }
@@ -20,6 +27,8 @@ const mapStateToProps = (state)=>{
   return{
     input: state.convert.input,
     output: state.convert.output,
+    fromSymbol: state.convert.fromSymbol,
+    toSymbol: state.convert.toSymbol,
     fromUnit: state.option.fromUnit,
     toUnit: state.option.toUnit
   }

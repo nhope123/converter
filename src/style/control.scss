@@ -1,37 +1,37 @@
+@import './elements/variables';
+@import './elements/mixins';
 
 #control{
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 12px;
-
-  //border: 2px solid grey;
-
+  @include respond-layout(row,center,center);
+  width: 90%;
   div{
-    display: inline-block;
-    position: relative;
+    @include displayPosition(inline-block,relative);
     text-align: center;
-    width: 140px;
+    color: white;
+    cursor: pointer;
   }
   .active{
-    border: 3px outset grey;
-    background-color: blue;
+    border: 3px inset white;
+    background-color: #009bf9;
     border-radius: 8px;
+    color: $nav-text-color;
   }
-/*  #length, #weight{
-    width: 24%;
-  }
-  #temperature{ width: 52%;} */
+
 }
 @media screen and (max-width: 450px) {
   #control{
-    width: 90%;
+    line-height: 1.7;
+    #temperature{ width: 42vw;}
+    #weight, #length{ width:23vw;}
   }
 }
+
 @media screen and (min-width: 451px) {
   #control{
-    width: 650px;
-    height: 35px;
+    height: 70px;
+    line-height: 2;
+    div{
+      width: 140px;
+    }
   }
 }

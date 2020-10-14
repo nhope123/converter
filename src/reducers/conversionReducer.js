@@ -5,78 +5,79 @@ import {evaluate} from './../conversion/unitConversion.js';
 
 
 // The default and initialing value for the Interact component and states
-const conversionDefault = {input: 0, output: 0};
+const conversionDefault = {input: 0, output: 0, fromSymbol: 'mm', toSymbol: 'cm'};
 
 // Reducer connected to the Interact component and states
 export default function convertReducer(state= conversionDefault, action){
+  
   var fromArgs = {data: state.input, fromUnit: action.type, toUnit: action.counterUnit };
   var toArgs = {data: state.input, fromUnit: action.counterUnit, toUnit: action.type };
 
   switch (action.type) {
     case Unit.LENGTH :
-      return conversionDefault;
+      return {input: 0, output: 0, fromSymbol: 'mm', toSymbol: 'cm'};
     case Unit.WEIGHT :
-      return conversionDefault;
+      return {input: 0, output: 0, fromSymbol: 'mg', toSymbol: 'g '};
     case Unit.TEMP:
-      return conversionDefault;
+      return {input: 0, output: 0, fromSymbol: '°F', toSymbol: '°C'};
     case CONVERT:
       return evaluate(action);
     case OA.FROMMILLIMETER:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOMILLIMETER:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMCENTIMETER:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOCENTIMETER:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMINCH:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOINCH:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMFEET:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOFEET:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMMETER:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOMETER:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMKILOMETER:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOKILOMETER:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMFAHRENHEIT:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOFAHRENHEIT:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMCELSIUS:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOCELSIUS:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMKELVIN:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOKELVIN:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMMILLIGRAM:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOMILLIGRAM:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMGRAM:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOGRAM:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMOUNCE:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOOUNCE:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMPOUND:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOPOUND:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     case OA.FROMKILOGRAM:
-      return evaluate(fromArgs);
+      return Object.assign({}, evaluate(fromArgs), {fromSymbol: action.symbol});
     case OA.TOKILOGRAM:
-      return evaluate(toArgs);
+      return Object.assign({}, evaluate(toArgs), {toSymbol: action.symbol});
     default:
       return state;
   }
