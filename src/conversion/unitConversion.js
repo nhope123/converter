@@ -3,7 +3,15 @@
 const lengthList = ['fromMillimeter', 'fromCentimeter','fromInch','fromFeet','fromMeter','fromKilometer'];
 const weightList = ['fromMilligram', 'fromGram','fromOunce', 'fromPound','fromKilogram'];
 const tempList = ['fromFahrenheit',  'fromCelsius','fromKelvin'];
-
+const unitSymbols = {
+  fromMillimeter:'mm', fromCentimeter: 'cm', fromInch: 'in',fromFeet: 'ft',
+  fromMeter:'m', fromKilometer: 'km', toMillimeter:'mm', toCentimeter: 'cm',
+  toInch: 'in',toFeet: 'ft', toMeter:'m', toKilometer: 'km',
+  fromMilligram: 'mg', fromGram: 'g', fromOunce: 'oz', fromPound: 'lb',
+  fromKilogram: 'kg', toMilligram: 'mg', toGram: 'g', toOunce: 'oz', toPound: 'lb',
+  toKilogram: 'kg', fromFahrenheit: '°F', fromCelsius: '°C', fromKelvin: '°K',
+  toFahrenheit: '°F', toCelsius: '°C', toKelvin: '°K'
+};
 
 // Conversion values for length units
 const lengthConversionValues = {
@@ -101,11 +109,14 @@ export function convert(number, unitFrom, unitTo){
   )
 }
 
+
 // Evaluate, and validate input then convert to new unit
 export function evaluate(anObject){
   var inputValue = Math.abs(parseFloat(anObject.data.toString()));
+  console.log('Mod input: '+ inputValue);
   return {
     input: validateInput( anObject.data.toString(), inputValue),
-    output: convert(inputValue, anObject.fromUnit, anObject.toUnit )
+    output: convert(inputValue, anObject.fromUnit, anObject.toUnit ),
+    fromSymbol: unitSymbols[anObject.fromUnit], toSymbol: unitSymbols[anObject.toUnit]
   };
 }

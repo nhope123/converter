@@ -9,13 +9,15 @@ class Option extends React.Component {
       <div id='conversion-unit'>
         <Dropdown {...{label:this.props.fromUnit,
                        choice: this.props.fromUnitOptions,
-                       counterUnit: this.props.toUnit
+                       counterUnit: this.props.toUnit,
+                       side: 'left'
                      }}/>
-        <div id='direction'><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+        <div id='direction'><i className="fa fa-arrow-circle-right" aria-hidden="true"></i>
 </div>
         <Dropdown {...{label:this.props.toUnit,
                        choice: this.props.toUnitOptions,
-                       counterUnit: this.props.fromUnit
+                       counterUnit: this.props.fromUnit,
+                       side: 'right'
                      }} />
       </div>
     );

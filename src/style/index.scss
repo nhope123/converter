@@ -1,12 +1,14 @@
+@import './elements/variables';
+
 *{box-sizing: border-box;}
 body {
   margin: 0;
-  font-family: sans-serif;
+  //font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 #root{
   width: 100vw;
   height: 100vh;
-
+  background-color: $growingColorConversion;
 }

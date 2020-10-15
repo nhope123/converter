@@ -1,0 +1,31 @@
+
+@mixin respond-layout($direction,$justify,$align){
+  @include displayPosition(flex,relative);
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin displayPosition($display,$position){
+  display: $display;
+  position: $position;
+}
+
+@mixin box-shadow($h-offset, $v-offset, $blur,$spread,$color){
+  -webkit-box-shadow: $h-offset  $v-offset  $blur $spread $color;
+  -moz-box-shadow: $h-offset  $v-offset  $blur $spread $color;
+  box-shadow: $h-offset  $v-offset  $blur $spread $color;
+}
+
+@mixin transformWithDuration($size, $time){
+  -moz-transform:  $size;
+  -webkit-transform:  $size;
+  -o-transform:  $size;
+  -ms-transform:  $size;
+  transform:  $size;
+
+  -moz-transition-duration:  $time;
+  -webkit-transition-duration:  $time;
+  -o-transition-duration:  $time;
+  transition-duration:  $time;
+}

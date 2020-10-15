@@ -1,48 +1,87 @@
-$navShadow: rgba(0,0,0,0.2);
-$navHeight: 50px;
+@import './elements/variables';
+@import './elements/mixins';
+
 nav{
-  display: block;
-  position: fixed;
+  @include displayPosition(block,fixed);
   top: 0;
   left: 0;
-  z-index: 10;
-  border-bottom: 2px solid red;
-  border-left: 2px solid red;
-  border-top-left-radius: $navHeight;
-  border-bottom-left-radius: $navHeight ;
+  z-index: 3;
+  border-bottom: 3px solid $lightColorConversion;
+  border-left: 3px solid $lightColorConversion;
   width: 100vw;
-  height: $navHeight;
   margin-left: 10px;
-  box-shadow: 0px 3px 3px $navShadow;
+  background-color: $midColorConversion;
+  box-shadow: 0px 4px 5px $darkColorConversion;
   i{
-    font-size: 30px !important;
-    padding: 9px 15px 0px 20px;
+    padding: 0px 15px 13px 20px;
+    @include transformWithDuration(rotate(180deg),0s);
+    @include displayPosition(block,relative);
+    float: left;
+    color: white;//#bc3f7f;//#3b4856;
+    text-shadow: -15px 0px white,-7px 6px rgba(255,255,255,0.7);
   }
   span{
-    font-size: 24px;
+    @include displayPosition(block,relative);
+    font-size: 26px;
+    font-family: $sansitaFont;
+    font-weight: bolder;
+
+    padding-top: 10px;
+    a{
+      color: $nav-text-color;
+      text-decoration: none;
+    }
   }
+/*  [title~='by']{
+    background-color: $lightColorConversion;
+    border-radius: 5px;
+  } */
 }
 
-
 #main-container{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
+  @include respond-layout(column, center, center);
   width: 100vw;
   height: 100vh;
 
   #boundary{
-    border: 2px solid black;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+
+    border: 3px outset black;
+    border-radius: 10px;
+    z-index: 3;
+    width: $ConverterWidth;
     max-width: 650px;
+    background-color: $grownColorConversion;
   }
 
+}
+
+@media screen and (max-width: 450px) {
+  nav{
+    height: $smallNavHeight;
+    border-top-left-radius: $smallNavHeight;
+    border-bottom-left-radius: $smallNavHeight;
+    i{
+      font-size: 26px !important;
+    }
+  }
+  #boundary{
+    @include respond-layout(row, space-around, center);
+    flex-wrap: wrap;
+    padding: 25px 10px;
+  }
+}
+@media screen and (min-width: 451px) {
+  nav{
+    height: $largeNavHeight;
+    border-top-left-radius: $largeNavHeight;
+    border-bottom-left-radius: $largeNavHeight;
+    i{
+      font-size: 30px !important;
+    }
+  }
+  #boundary{
+    @include respond-layout(column, center, center);
+    padding: 25px;
+    margin-top: $largeNavHeight;
+  }
 }

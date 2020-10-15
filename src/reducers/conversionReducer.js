@@ -1,26 +1,29 @@
 import * as Unit from './../actions/unitActions.js';
 import * as OA from './../actions/optionActions.js';
-import {CONVERT} from './../actions/convertActions.js';
+import {CONVERT, RESET} from './../actions/convertActions.js';
 import {evaluate} from './../conversion/unitConversion.js';
 
 
 // The default and initialing value for the Interact component and states
-const conversionDefault = {input: 0, output: 0};
+const conversionDefault = {input: 0, output: 0, fromSymbol: 'mm', toSymbol: 'cm'};
 
 // Reducer connected to the Interact component and states
 export default function convertReducer(state= conversionDefault, action){
+
   var fromArgs = {data: state.input, fromUnit: action.type, toUnit: action.counterUnit };
   var toArgs = {data: state.input, fromUnit: action.counterUnit, toUnit: action.type };
 
   switch (action.type) {
     case Unit.LENGTH :
-      return conversionDefault;
+      return {input: 0, output: 0, fromSymbol: 'mm', toSymbol: 'cm'};
     case Unit.WEIGHT :
-      return conversionDefault;
+      return {input: 0, output: 0, fromSymbol: 'mg', toSymbol: 'g '};
     case Unit.TEMP:
-      return conversionDefault;
+      return {input: 0, output: 0, fromSymbol: '°F', toSymbol: '°C'};
     case CONVERT:
       return evaluate(action);
+    case RESET:
+      return {input: 0, output: 0, fromSymbol: state.fromSymbol, toSymbol: state.toSymbol};
     case OA.FROMMILLIMETER:
       return evaluate(fromArgs);
     case OA.TOMILLIMETER:

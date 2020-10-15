@@ -42,11 +42,12 @@ class Dropdown extends React.Component{
       'toPound': ['Pound', ()=>this.props.convertToPound(this.props.counterUnit), 'tlb'],
       'toKilogram': ['Kilogram', ()=>this.props.convertToKilogram(this.props.counterUnit), 'tkg']
     };
+    var classValue = 'content ' + this.props.side;
 
     return(
       <div className='dropdown'>
       <button className='dropdownBtn' > {unitValues[this.props.label][0]} </button>
-    <div className='content' >
+    <div className={classValue} >
       {this.props.choice.map((item,id) => (
         <div key={unitValues[item][2]} id={unitValues[item][2]} onClick={unitValues[item][1]}>{unitValues[item][0]}</div>
       ))}

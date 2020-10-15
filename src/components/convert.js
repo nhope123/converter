@@ -9,8 +9,13 @@ export default class Convert extends React.Component{
     return(
       <div>
         <nav >
-          <i className="fa fa-rebel" aria-hidden="true"></i>
-          <span>Rebel Conversion</span>
+          <i className="fa fa-rebel" aria-hidden="true" ></i>
+
+          <span title='by Nial'>
+            <a href='https://github.com/nhope123/converter' target='_blank' rel="noopener noreferrer" title='Github Repository'>
+            Rebel Conversion
+            </a>
+          </span>
         </nav>
         <div id='main-container' >
           <div id='boundary'>
