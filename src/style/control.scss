@@ -7,7 +7,6 @@
   div{
     @include displayPosition(inline-block,relative);
     text-align: center;
-    color: white;
     cursor: pointer;
   }
   .active{

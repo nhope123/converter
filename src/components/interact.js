@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {convertAction} from './../actions/convertActions.js';
+import {convertAction, resetAction} from './../actions/convertActions.js';
 
 // Container component for conversion input vale and the converted display value
 class Interact extends React.Component{
@@ -12,10 +12,13 @@ class Interact extends React.Component{
           <input id='input' type='text' min='0'  value={this.props.input} onChange={(event)=>this.props.convert(event, this.props.fromUnit,this.props.toUnit)} />
           <span>{this.props.fromSymbol}</span>
         </div>
+        <div>
+          <i className="fa fa-refresh" aria-hidden="true" onClick={this.props.reset}></i>
+        </div>
         <div id='end'>
-          <div id='display' >{ this.props.output}
-          </div>
           <span> {this.props.toSymbol}</span>
+          <div id='display' >{ this.props.output}</div>
+
         </div>
       </div>
     );
@@ -37,7 +40,8 @@ const mapStateToProps = (state)=>{
 // Dispatching actions needed for this component
 const mapDispatchToProps = (dispatch)=>{
   return bindActionCreators({
-    convert: convertAction
+    convert: convertAction,
+    reset: resetAction
   },dispatch);
 }
 
