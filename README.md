@@ -51,7 +51,7 @@ The following languages, framework and libraries were used in the converter crea
 
 ## ScreenShot 
 
-![Screen shot of Rebel Conversion](./converter.png)
+![Screen shot of Rebel Conversion](./public/converter.png)
 
 ## Credit
 
