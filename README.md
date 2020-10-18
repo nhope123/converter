@@ -48,6 +48,8 @@ The following languages, framework and libraries were used in the converter crea
     1. Flex-box (for layout and responsiveness)
 6. JavaScript ES6
 7. [create-react-app](https://github.com/facebook/create-react-app)
+8. [decimal.js](http://mikemcl.github.io/decimal.js/)
+9. [jest test](https://jestjs.io/en/)
 
 ## ScreenShot 
 
