@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 // Buttons for selecting the units used in conversion
-const Button = (props)=>{
+export const Button = (props)=>{
   return(
     <div onClick={props.callback} id={props.id} tabIndex='0' className={props.style}
      value={props.id}>{props.label} </div>
