@@ -14,8 +14,8 @@ const unitSymbols = {
 };
 
 // Conversion values for length units
-const lengthConversionValues = {
-  'fromMillimeter': { toMillimeter: 1, toCentimeter: 0.01, toInch:0.0393700787,
+export const lengthConversionValues = {
+  'fromMillimeter': { toMillimeter: 1, toCentimeter: 0.1, toInch:0.0393700787,
                       toFeet:0.0032808399, toMeter:0.001, toKilometer:0.000001
                     },
   'fromCentimeter': { toMillimeter: 10, toCentimeter: 1, toInch:0.3937007874,
@@ -37,7 +37,7 @@ const lengthConversionValues = {
 };
 
 // Conversion values for Weight units
-const weightConversionValues = {
+export const weightConversionValues = {
   'fromMilligram': { toMilligram: 1, toGram: 1.0e-3, toOunce: 3.5274e-5,
                      toPound: 2.2046226218488e-6, toKilogram: 1.0e-6
                    },
@@ -56,35 +56,35 @@ const weightConversionValues = {
 };
 
 // Convert length given a number, a Unit from and Unit to.
-const convertLength = (number, unitFrom, unitTo)=>{
-  return (number * lengthConversionValues[unitFrom][unitTo])
+export const convertLength = (number, unitFrom, unitTo)=>{
+  return parseFloat((number * lengthConversionValues[unitFrom][unitTo]).toFixed(6));
 };
 
 // Convert Weight given a number, a Unit from and Unit to.
-const convertWeight = (number, unitFrom, unitTo)=>{
-  return (number * weightConversionValues[unitFrom][unitTo])
+export const convertWeight = (number, unitFrom, unitTo)=>{
+  return parseFloat((number * weightConversionValues[unitFrom][unitTo]).toFixed(6));
 };
 
 // Convert Temperature given a number, a Unit from and Unit to.
-function convertTemp(number, unitFrom, unitTo){
+export function convertTemp(number, unitFrom, unitTo){
   var result ;
   switch (unitFrom) {
     case 'fromFahrenheit':
       result = (unitTo === 'toCelsius')? ((5/9) * (number - 32)):
                   (unitTo === 'toKelvin')? ((5/9) * (number + 459.67)):
                     (unitTo === 'toFahrenheit')? number : 'NAN';
-      return result;
+      return parseFloat(result.toFixed(2));
     case 'fromCelsius':
       result = (unitTo === 'toFahrenheit')? ((9/5) * number + 32):
                   (unitTo === 'toKelvin')? (273.15 +  number):
                       (unitTo === 'toCelsius')? number : 'NAN';
-      return result;
+      return parseFloat(result.toFixed(2));
     case 'fromKelvin':
       result = (unitTo === 'toFahrenheit')? ((9/5) * number - 459.67):
                   (unitTo === 'toCelsius')? (number - 273.15):
                       (unitTo === 'toKelvin')? number : 'NAN';
 
-      return result;
+      return parseFloat(result.toFixed(2));
     default:
       return 'NAN';
   }
@@ -93,10 +93,11 @@ function convertTemp(number, unitFrom, unitTo){
 // Validate input as an int or float number
 export function validateInput(rawInput, changeInput){
  return (
-   (rawInput.endsWith('.') && (changeInput.toString()).length === (rawInput.length -1) &&
-    (rawInput.match(/[.][0-9]*[.]/) === null)) ? rawInput :
-        (rawInput.endsWith('0') && rawInput.includes('.'))? rawInput :
-            (rawInput === null)? 0 : changeInput
+   (rawInput.length > 13)? rawInput.slice(0,13):
+     (rawInput.endsWith('.') && (changeInput.toString()).length === (rawInput.length -1) &&
+      (rawInput.match(/[.][0-9]*[.]/) === null)) ? rawInput :
+          (rawInput.endsWith('0') && rawInput.includes('.'))? rawInput :
+              (rawInput === null)? 0 : changeInput
  )
 }
 
@@ -109,11 +110,9 @@ export function convert(number, unitFrom, unitTo){
   )
 }
 
-
 // Evaluate, and validate input then convert to new unit
 export function evaluate(anObject){
   var inputValue = Math.abs(parseFloat(anObject.data.toString()));
-  console.log('Mod input: '+ inputValue);
   return {
     input: validateInput( anObject.data.toString(), inputValue),
     output: convert(inputValue, anObject.fromUnit, anObject.toUnit ),
